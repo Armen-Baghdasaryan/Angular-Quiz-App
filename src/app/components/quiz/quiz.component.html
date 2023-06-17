@@ -1,0 +1,48 @@
+<div class="quiz__wrapper">
+  <div *ngIf="(curIdx$ | async) !== quizItems.length; else elseBlock">
+    <div class="quiz__items" *ngFor="let quiz of quizItems; let i = index">
+      <div
+        class="quiz__item"
+        *ngIf="(curIdx$ | async) === i"
+        [ngClass]="{
+          true__answer: checkAnswer$ | async,
+          false__answer:
+            !(checkAnswer$ | async) && (checkAnswer$ | async) !== null,
+          choosed__answer: answerIsChoosed$ | async
+        }"
+      >
+        <h2>{{ quiz.question }}</h2>
+        <ul
+          class="quiz__answers"
+          *ngFor="let answer of quiz.answers; let i = index"
+        >
+          <li
+            class="quiz__answer"
+            [ngClass]="{
+              choosed__answer: answer.isChoosed,
+              trusty__answer: answer.isTrusty
+            }"
+            (click)="handleChoose(i + 1, quiz.correctAnswer, answer.id)"
+          >
+            <p>{{ i + 1 }}.</p>
+            <h3>{{ answer.answer }}</h3>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="quiz__btn">
+      <button
+        [disabled]="!(answerIsChoosed$ | async)"
+        class="app__button"
+        (click)="handleNext()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <app-result
+      [props]="{ correctCount: correctCount$ | async, quizItems }"
+    ></app-result>
+  </ng-template>
+</div>

@@ -1,0 +1,32 @@
+.progress__wrapper {
+  position: relative;
+
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 10px;
+    text-align: end;
+  }
+}
+
+.progress {
+  height: 10px;
+  border-radius: 100px;
+  background: #ffffff;
+}
+
+.progress__active {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: var(--progress-width);
+  height: 10px;
+  border-radius: 100px;
+  background: rgb(5, 5, 250);
+  transition: all 0.5s;
+}
+
+.progress__end {
+  display: none;
+}

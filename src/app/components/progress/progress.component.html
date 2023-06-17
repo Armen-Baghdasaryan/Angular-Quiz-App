@@ -1,0 +1,5 @@
+<div #progressWidth class="progress__wrapper" [ngClass]="{'progress__end': (curIdx$ | async) === quizItems.length}">
+  <p>{{ (curIdx$ | async)! + 1 }} / {{quizItems.length}}</p>
+  <div class="progress"></div>
+  <div class="progress__active"></div>
+</div>

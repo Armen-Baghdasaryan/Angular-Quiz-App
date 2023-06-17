@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, p, span, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.app__button {
+    width: 140px;
+    min-height: 40px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgb(5, 5, 250);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  
+    font-size: 18px;
+    color: #ffffff;
+  
+    &:hover,
+    &:active {
+      background: rgb(1, 1, 66);
+    }
+  
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+  
